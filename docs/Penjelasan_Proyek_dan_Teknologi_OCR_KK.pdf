@@ -1,0 +1,743 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R 6 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 10 0 R /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 11 0 R /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 12 0 R /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 13 0 R /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+10 0 obj
+<< /Length 7280 >>
+stream
+q
+1.50 w
+0.950 0.970 1.000 rg
+0.750 0.850 0.980 RG
+48.00 701.89 499.28 95.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 701.89 6.00 95.00 re
+f
+Q
+BT / F2 16.00 Tf 0.080 0.180 0.450 rg 66.00 768.89 Td (DOKUMENTASI TEKNIS & PANDUAN BELAJAR) Tj ET
+BT / F1 10.00 Tf 0.250 0.350 0.550 rg 66.00 748.89 Td (Aplikasi Pendataan Penduduk Berbasis OCR Kartu Keluarga \(KK\) Indonesia) Tj ET
+BT / F3 8.50 Tf 0.400 0.450 0.550 rg 66.00 726.89 Td (Penyusun: Tim Pengembang Proyek Citra  |  Tanggal: 21 November 2026  |  Platform: Flask + MySQL + Tesseract) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 661.89 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 661.89 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 667.89 Td (1. TUJUAN DAN LATAR BELAKANG PROYEK) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 640.39 Td (Aplikasi Pendataan Penduduk ini dibangun untuk mendigitalkan proses pencatatan Kartu Keluarga \(KK\) di Indonesia) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 626.89 Td (yang selama ini dilakukan secara manual. Dalam satu lembar KK terdapat 9 kolom identitas keluarga dan hingga puluhan) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 613.39 Td (baris anggota keluarga dengan 17 kolom data masing-masing \(mulai dari NIK, tempat/tanggal lahir, pendidikan,) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 599.89 Td (pekerjaan, hingga nama orang tua\). Mengetik ratusan data ini secara manual sangat memakan waktu dan rentan terjadi) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 586.39 Td (kesalahan ketik \(human error\).) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 564.89 Td (Melalui aplikasi ini, petugas atau pengguna cukup mengunggah foto fisik Kartu Keluarga. Sistem secara otomatis) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 551.39 Td (menjalankan pemrosesan citra \(Computer Vision\) dan ekstraksi teks \(OCR\), lalu menyajikan data hasil pembacaan ke) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 537.89 Td (dalam antarmuka yang rapi untuk diverifikasi. Pengguna dapat langsung mengoreksi data sebelum disimpan secara aman) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 524.39 Td (ke database MySQL.) Tj ET
+q
+1.00 w
+0.950 0.970 1.000 rg
+0.700 0.820 0.980 RG
+48.00 450.89 499.28 61.50 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 450.89 4.00 61.50 re
+f
+Q
+BT / F2 9.50 Tf 0.110 0.310 0.850 rg 62.00 498.39 Td (Konsep Utama: Human-in-the-Loop) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 484.39 Td (OCR pada blangko resmi tidak selalu 100% sempurna karena kualitas foto fisik yang beragam \(pencahayaan, lipatan) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 471.89 Td (kertas, watermark\). Oleh karena itu, sistem menerapkan konsep Human-in-the-Loop: AI mengekstrak data otomatis di) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 459.39 Td (tahap awal, kemudian manusia memverifikasi dan menyetujui hasilnya sebelum masuk ke database permanen.) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 420.89 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 420.89 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 426.89 Td (2. DAFTAR LENGKAP TECH STACK & PERANANNYA) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 399.39 Td (Berikut adalah teknologi yang digunakan dalam proyek ini beserta alasan pemilihannya:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 367.39 499.28 20.00 re
+f
+Q
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 54.00 373.39 Td (Komponen) Tj ET
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 164.00 373.39 Td (Teknologi) Tj ET
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 274.00 373.39 Td (Peranan & Alasan Pemilihan) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 349.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 354.39 Td (Bahasa Utama) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 354.39 Td (Python 3.10+) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 354.39 Td (Bahasa standar industri untuk Computer Vision, OCR, dan manipulasi teks regex.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 331.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 336.39 Td (Web Backend) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 336.39 Td (Flask Framework) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 336.39 Td (Framework mikro Python yang ringan, cepat, dan modular menggunakan Blueprint MVC.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 313.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 318.39 Td (Database) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 318.39 Td (MySQL \(Laragon\)) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 318.39 Td (Database relasional ACID-compliant untuk menjamin integritas data kependudukan.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 295.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 300.39 Td (Database Client) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 300.39 Td (mysql-connector) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 300.39 Td (Menggunakan Raw SQL murni tanpa ORM sesuai PRD untuk kontrol penuh transaksi.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 277.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 282.39 Td (Engine OCR) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 282.39 Td (Tesseract OCR v5) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 282.39 Td (Mesin OCR open-source andal dengan model bahasa Indonesia \(ind\) dan Inggris \(eng\).) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 259.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 264.39 Td (Python OCR) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 264.39 Td (pytesseract) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 264.39 Td (Wrapper Python resmi untuk menjembatani komunikasi ke executable Tesseract.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 241.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 246.39 Td (Olah Citra) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 246.39 Td (Pillow \(PIL\) & OpenCV) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 246.39 Td (Manipulasi berkas gambar, Lanczos upscaling, dan multi-region crop terisolasi.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 223.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 228.39 Td (Frontend UI) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 228.39 Td (HTML5 & CSS3 Murni) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 228.39 Td (Tampilan modern, responsif 95% widescreen, bebas AI-slop, border-radius 10px seragam.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 205.39 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 210.39 Td (Ikon & Interaksi) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 164.00 210.39 Td (FontAwesome 6 & JS) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 210.39 Td (Ikon resmi UI dan JavaScript vanilla untuk zoom interaktif dan preview dokumen.) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 477.28 25 Td (Halaman 1 dari 4) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 48.00 25 Td (Dokumentasi Pembelajaran Teknis - Aplikasi Web OCR Pendataan Penduduk) Tj ET
+0.5 w 0.85 0.88 0.92 RG 48.00 35 499.28 0 re S
+
+endstream
+endobj
+11 0 obj
+<< /Length 6647 >>
+stream
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 806.89 499.28 1.50 re
+f
+Q
+BT / F2 7.50 Tf 0.400 0.450 0.500 rg 48.00 811.89 Td (SISTEM PENDATAAN PENDUDUK BERBASIS OCR KARTU KELUARGA) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 766.89 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 766.89 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 772.89 Td (3. CARA KERJA & ALUR PEMROSESAN OCR \(STEP-BY-STEP\)) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 745.39 Td (Memproses Kartu Keluarga memiliki tantangan unik: blangko KK memiliki 2 kolom teks pada identitas atas yang) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 731.89 Td (bersebelahan \(Kiri: Alamat & RT/RW; Kanan: Desa & Kecamatan\) serta 2 tabel anggota keluarga horizontal dengan garis) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 718.39 Td (batas dan watermark. Berikut adalah tahapan pipeline OCR yang diimplementasikan di app/services/ocr_service.py:) Tj ET
+BT / F2 10.50 Tf 0.150 0.250 0.450 rg 48.00 694.39 Td (Langkah 1: Validasi Berkas & Smart Image Scaling) Tj ET
+q
+1.00 w
+0.850 0.880 0.920 rg
+48.00 690.39 499.28 0.50 re
+f
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 674.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 673.39 Td (Validasi Format: Sistem hanya menerima file berekstensi JPG, JPEG, dan PNG dengan ukuran maksimal 16 MB. File PDF) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 660.89 Td (ditolak secara eksplisit sesuai PRD.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 644.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 643.39 Td (Lanczos Upscaling: Jika foto yang diunggah memiliki resolusi rendah \(< 1200 pixel karena kompresi WhatsApp atau) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 630.89 Td (kamera HP lama\), sistem secara proporsional menaikkan resolusi ke 1400px menggunakan filter Lanczos. Hal ini membuat) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 618.39 Td (teks kecil tetap tajam saat dipindai.) Tj ET
+BT / F2 10.50 Tf 0.150 0.250 0.450 rg 48.00 597.89 Td (Langkah 2: Multi-Region Header OCR \(Solusi Pemecahan Kolom\)) Tj ET
+q
+1.00 w
+0.850 0.880 0.920 rg
+48.00 593.89 499.28 0.50 re
+f
+Q
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 576.39 Td (Jika seluruh gambar KK dipindai sekaligus, Tesseract akan membaca teks secara horizontal menabrak batas kolom.) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 562.89 Td (Akibatnya teks 'Alamat' di sisi kiri akan menyatu dengan 'Kecamatan' di sisi kanan \(misal: 'JL. SPARIMAN ...) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 549.39 Td (Kecainean aot LDBANG EANGG'\), sedangkan baris 'Desa / Kelurahan' terlewatkan sepenuhnya. Sistem menyelesaikan) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 535.89 Td (masalah ini dengan teknik Multi-Region Crop:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 516.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 514.89 Td (Crop Header Kanan \(x: 45%-100%, y: 8%-35%\): Mengisolasi area wilayah kanan secara terpisah. Menghasilkan pembacaan) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 502.39 Td (Desa/Kelurahan, Kecamatan, Kab/Kota, dan Provinsi 100% akurat tanpa gangguan.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 486.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 484.89 Td (Crop Header Kiri \(x: 0%-55%, y: 8%-35%\): Mengisolasi area data keluarga kiri untuk mengekstrak Alamat Lengkap, RT/RW,) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 472.39 Td (dan Kode Pos secara bersih.) Tj ET
+BT / F2 10.50 Tf 0.150 0.250 0.450 rg 48.00 451.89 Td (Langkah 3: Pemisahan & Penyatuan Dua Tabel Anggota Keluarga) Tj ET
+q
+1.00 w
+0.850 0.880 0.920 rg
+48.00 447.89 499.28 0.50 re
+f
+Q
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 430.39 Td (Blangko resmi KK membagi anggota keluarga ke dalam dua tabel horizontal:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 410.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 409.39 Td (Tabel 1 \(Data Diri\): Mengekstrak No Urut, Nama Lengkap, NIK \(16 digit\), Jenis Kelamin, Tempat Lahir, Tanggal Lahir) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 396.89 Td (\(DD-MM-YYYY\), Agama, Pendidikan, dan Jenis Pekerjaan.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 380.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 379.39 Td (Tabel 2 \(Status & Orang Tua\): Mengekstrak Status Perkawinan, Status Hubungan Keluarga \(Kepala Keluarga, Istri, Anak\),) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 366.89 Td (Kewarganegaraan, Nama Ayah, dan Nama Ibu.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 350.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 349.39 Td (Penyatuan Baris \(Merge\): Sistem menggabungkan data dari kedua tabel berdasarkan Nomor Urut anggota, sehingga tiap) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 336.89 Td (anggota keluarga memiliki tepat 17 field lengkap.) Tj ET
+BT / F2 10.50 Tf 0.150 0.250 0.450 rg 48.00 316.39 Td (Langkah 4: Pembersihan Noise & Normalisasi Teks Cerdas \(Regex Heuristics\)) Tj ET
+q
+1.00 w
+0.850 0.880 0.920 rg
+48.00 312.39 499.28 0.50 re
+f
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 296.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 295.39 Td (Noise Batas Tabel \(|\): Garis vertikal tabel sering terbaca huruf 'J' di awal nama \(misal: '|ALFONS' terbaca) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 282.89 Td ('JALFONS'\). Regex otomatis menormalkannya menjadi 'ALFONS'.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 266.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 265.39 Td (Nama Khas Daerah: Normalisasi spasi otomatis pada nama Bali seperti 'IMADE' -> 'I MADE', 'NIWAYAN' -> 'NI WAYAN',) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 252.89 Td (serta nama 'SRIWAHYUNI' -> 'SRI WAHYUNI'.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 236.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 235.39 Td (Filter Watermark Dot-Matrix: Teks watermark cap/cetakan \('3 7 E 7 5...', '1005'\) dibersihkan agar tidak menimpa kolom) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 222.89 Td (Nama Orang Tua.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 206.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 205.39 Td (Toleransi Karakter Angka NIK & No KK: Karakter huruf yang tertukar bentuk dengan angka diperbaiki otomatis \('b'/'B') Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 192.89 Td (-> '6'/'8', 'o'/'O' -> '0', 'l'/'I' -> '1'\).) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 477.28 25 Td (Halaman 2 dari 4) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 48.00 25 Td (Dokumentasi Pembelajaran Teknis - Aplikasi Web OCR Pendataan Penduduk) Tj ET
+0.5 w 0.85 0.88 0.92 RG 48.00 35 499.28 0 re S
+
+endstream
+endobj
+12 0 obj
+<< /Length 6416 >>
+stream
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 806.89 499.28 1.50 re
+f
+Q
+BT / F2 7.50 Tf 0.400 0.450 0.500 rg 48.00 811.89 Td (SISTEM PENDATAAN PENDUDUK BERBASIS OCR KARTU KELUARGA) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 766.89 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 766.89 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 772.89 Td (4. KONFIRMASI FITUR YANG TELAH SELESAI DIBUAT) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 745.39 Td (Seluruh kebutuhan fungsional dan non-fungsional pada PRD telah berhasil diselesaikan secara tuntas. Berikut adalah) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 731.89 Td (rincian fitur yang telah aktif:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 699.89 499.28 20.00 re
+f
+Q
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 54.00 705.89 Td (Tahap / Modul) Tj ET
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 159.00 705.89 Td (Fitur Utama) Tj ET
+BT / F2 8.50 Tf 1.000 1.000 1.000 rg 274.00 705.89 Td (Deskripsi & Keunggulan Implementasi) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 681.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 686.89 Td (Tahap 1: Input) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 686.89 Td (Upload & Panduan) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 686.89 Td (Form nama kepala keluarga, area drag-and-drop foto KK, validasi ketat, animasi proses non-popup.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 663.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 668.89 Td (Tahap 2: Review) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 668.89 Td (Grid 2-Kolom & Zoom) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 668.89 Td (Mode widescreen 95%: Form identitas 9 kolom di kiri, kotak cuplikan foto KK interaktif di kanan.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 645.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 650.89 Td (Tahap 2: Review) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 650.89 Td (Zoom Interaktif) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 650.89 Td (Tombol [-], indikator persentase dinamis \(50% s/d 300%\), [+], dan tombol ukuran penuh di tab baru.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 627.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 632.89 Td (Tahap 2: Review) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 632.89 Td (Tabel 17 Kolom) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 632.89 Td (Seluruh data anggota editable langsung, tambah baris anggota baru, hapus baris dinamis.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 609.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 614.89 Td (Tahap 3: Simpan) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 614.89 Td (Transaksi ACID) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 614.89 Td (Menyimpan 9 kolom identitas dan 17 kolom anggota keluarga sekaligus dalam 1 transaksi MySQL rollback.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 591.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 596.89 Td (Tahap 3: Simpan) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 596.89 Td (Anti-Duplikasi) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 596.89 Td (Membersihkan anggota lama sebelum insert baru saat re-upload, mencegah bug penumpukan data anggota.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 573.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 578.89 Td (Tahap 3: Simpan) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 578.89 Td (Waktu Riil Input) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 578.89 Td (Mencatat created_at aktual database \(misal: 21 Nov 2026, 15:21\) bukan teks hardcoded.) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 555.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 560.89 Td (Daftar KK) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 560.89 Td (Filter & Toolbar) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 560.89 Td (Pencarian No. KK/Nama, dropdown filter \(1-3 anggota, 4+ anggota, Nama A-Z, Terbanyak\), paginasi icon.) Tj ET
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.880 0.900 0.940 RG
+48.00 537.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 542.89 Td (Detail KK) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 542.89 Td (Kartu & Rincian) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 542.89 Td (Tampilan 9 field identitas, tabel 17 kolom anggota, tombol aksi seragam height 40px \(Kembali, Edit, Hapus\).) Tj ET
+q
+0.50 w
+0.980 0.990 1.000 rg
+0.880 0.900 0.940 RG
+48.00 519.89 499.28 18.00 re
+B
+Q
+BT / F2 8.00 Tf 0.150 0.200 0.280 rg 54.00 524.89 Td (Edit & Hapus) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 159.00 524.89 Td (CRUD Lengkap) Tj ET
+BT / F1 8.00 Tf 0.150 0.200 0.280 rg 274.00 524.89 Td (Form edit identitas & anggota keluarga, serta fitur hapus permanen dengan cascade delete aman.) Tj ET
+BT / F2 10.50 Tf 0.150 0.250 0.450 rg 48.00 495.89 Td (Penyempurnaan UI/UX & Kualitas Tampilan) Tj ET
+q
+1.00 w
+0.850 0.880 0.920 rg
+48.00 491.89 499.28 0.50 re
+f
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 476.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 474.89 Td (Penyeragaman Header & Navbar: Navbar menggunakan lebar kontainer 95% sejajar dengan konten. Tombol navigasi 'Input) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 462.39 Td (KK' dan 'Daftar KK' memiliki ukuran presisi 96x38px.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 446.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 444.89 Td (Bebas Pergeseran Layout \(Layout Shift\): Penerapan 'scrollbar-gutter: stable' dan 'overflow-y: scroll' membuat posisi) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 432.39 Td (header 100% stabil tanpa bergeser saat berpindah halaman.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 416.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 414.89 Td (Desain Bersih & Elegan: Semua sudut membulat seragam \(border-radius: 10px\), palet warna Royal Blue modern, bebas) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 402.39 Td (emoji, dan ramah pengguna.) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 477.28 25 Td (Halaman 3 dari 4) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 48.00 25 Td (Dokumentasi Pembelajaran Teknis - Aplikasi Web OCR Pendataan Penduduk) Tj ET
+0.5 w 0.85 0.88 0.92 RG 48.00 35 499.28 0 re S
+
+endstream
+endobj
+13 0 obj
+<< /Length 6864 >>
+stream
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 806.89 499.28 1.50 re
+f
+Q
+BT / F2 7.50 Tf 0.400 0.450 0.500 rg 48.00 811.89 Td (SISTEM PENDATAAN PENDUDUK BERBASIS OCR KARTU KELUARGA) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 766.89 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 766.89 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 772.89 Td (5. STRUKTUR DATABASE & SKEMA TABEL \(MYSQL\)) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 745.39 Td (Database db_mini_project_citra dirancang dengan struktur relasional 1-ke-Banyak \(One-to-Many\) yang menghubungkan) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 731.89 Td (1 identitas KK ke N anggota keluarga melalui foreign key dengan ON DELETE CASCADE:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 712.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 710.89 Td (Tabel 1: tbl_identitasKK \(9 Field Bisnis + created_at\): no_kk \(VARCHAR 16, PK\), nama_kepala_keluarga \(VARCHAR 100\),) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 698.39 Td (alamat \(TEXT\), rt_rw \(VARCHAR 10\), desa_kelurahan \(VARCHAR 100\), kecamatan \(VARCHAR 100\), kabupaten_kota \(VARCHAR) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 685.89 Td (100\), kode_pos \(VARCHAR 10\), provinsi \(VARCHAR 100\), dan created_at \(DATETIME DEFAULT CURRENT_TIMESTAMP\).) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 669.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 668.39 Td (Tabel 2: tbl_anggotaKeluargaKK \(19 Field Lengkap\): id_anggota \(BIGINT AUTO_INCREMENT, PK\), no_kk \(VARCHAR 16, FK\),) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 655.89 Td (nama_lengkap, nik, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, pendidikan, jenis_pekerjaan, golongan_darah,) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 643.39 Td (status_perkawinan, tanggal_perkawinan, status_hubungan_dalam_keluarga, kewarganegaraan, no_paspor, no_kitap,) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 630.89 Td (nama_ayah, nama_ibu.) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 602.39 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 602.39 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 608.39 Td (6. STRUKTUR FILE & FOLDER PROYEK) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 580.89 Td (Proyek ini tersusun secara rapi mengikuti pola arsitektur MVC \(Model-View-Controller\):) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 561.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 559.89 Td (app/controllers/main_controller.py: Menangani seluruh HTTP routing \(upload, save, daftar-kk, detail, edit, delete\).) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 543.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 542.39 Td (app/services/ocr_service.py: Pipeline pengolahan citra Tesseract, multi-region crop, dan parsing regex cerdas.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 526.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 524.89 Td (app/services/file_service.py: Validasi ekstensi berkas gambar \(hanya JPG, JPEG, PNG\) dan penyimpanan ke folder) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 512.39 Td (uploads/.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 496.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 494.89 Td (app/templates/: Template Jinja2: base.html, index.html, confirm.html, success.html, list_kk.html, detail_kk.html,) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 482.39 Td (edit_kk.html.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 466.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 464.89 Td (app/static/css/style.css: File CSS utama yang memuat sistem styling, variabel warna, responsivitas 95%, dan animasi.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 448.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 447.39 Td (database/connection.py & schema.sql: Koneksi database pooling murni mysql-connector dan fungsi transaksi ACID.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 431.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 429.89 Td (run.py & config.py: Entry point aplikasi Flask dan konfigurasi environment variabel \(.env\).) Tj ET
+q
+1.00 w
+0.930 0.950 0.980 rg
+0.820 0.870 0.940 RG
+48.00 401.39 499.28 24.00 re
+B
+Q
+q
+1.00 w
+0.110 0.310 0.850 rg
+48.00 401.39 4.00 24.00 re
+f
+Q
+BT / F2 11.00 Tf 0.100 0.200 0.500 rg 60.00 407.39 Td (7. PANDUAN MENJALANKAN APLIKASI DI KOMPUTER LAIN \(QUICK START\)) Tj ET
+BT / F1 9.50 Tf 0.150 0.180 0.240 rg 48.00 379.89 Td (Untuk menjalankan aplikasi ini di komputer teman Anda, cukup ikuti langkah mudah berikut:) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 360.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 358.89 Td (1. Pasang Software Pendukung: Install Python 3.10+, Laragon \(MySQL Server\), dan Tesseract OCR v5 \(tambahkan) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 346.39 Td (traineddata bahasa Indonesia 'ind'\).) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 330.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 328.89 Td (2. Clone / Copy Folder Proyek: Buka terminal di direktori proyek dan aktifkan virtual environment:) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 316.39 Td (venv\\Scripts\\activate) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 300.39 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 298.89 Td (3. Install Dependencies: Jalankan perintah: pip install -r requirements.txt) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 282.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 281.39 Td (4. Start MySQL Laragon: Buka Laragon dan klik 'Start All'. Database dan tabel akan diinisialisasi otomatis oleh) Tj ET
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 268.89 Td (sistem.) Tj ET
+q
+1.00 w
+0.110 0.310 0.850 rg
+52.00 252.89 3.50 3.50 re
+f
+Q
+BT / F1 9.00 Tf 0.180 0.220 0.280 rg 64.00 251.39 Td (5. Jalankan Server: Ketik perintah: python run.py lalu buka browser di alamat http://127.0.0.1:5000) Tj ET
+q
+1.00 w
+0.950 0.980 0.960 rg
+0.600 0.850 0.650 RG
+48.00 181.39 499.28 61.50 re
+B
+Q
+q
+1.00 w
+0.150 0.650 0.300 rg
+48.00 181.39 4.00 61.50 re
+f
+Q
+BT / F2 9.50 Tf 0.150 0.650 0.300 rg 62.00 228.89 Td (Ringkasan Siap Presentasi) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 214.89 Td (Aplikasi ini telah selesai 100% dan siap dipresentasikan atau diuji coba. Seluruh alur dari tahap upload, ekstraksi) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 202.39 Td (OCR multi-region, koreksi data, penyimpanan database ACID, hingga pengelolaan CRUD daftar KK telah teruji dengan) Tj ET
+BT / F1 9.00 Tf 0.150 0.200 0.250 rg 62.00 189.89 Td (data nyata Kartu Keluarga.) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 477.28 25 Td (Halaman 4 dari 4) Tj ET
+BT /F1 8 Tf 0.45 0.5 0.55 rg 48.00 25 Td (Dokumentasi Pembelajaran Teknis - Aplikasi Web OCR Pendataan Penduduk) Tj ET
+0.5 w 0.85 0.88 0.92 RG 48.00 35 499.28 0 re S
+
+endstream
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000139 00000 n 
+0000000292 00000 n 
+0000000445 00000 n 
+0000000598 00000 n 
+0000000751 00000 n 
+0000000821 00000 n 
+0000000896 00000 n 
+0000000974 00000 n 
+0000008307 00000 n 
+0000015007 00000 n 
+0000021476 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+28393
+%%EOF

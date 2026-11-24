@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pendataan Penduduk - OCR Kartu Keluarga{% endblock %}</title>
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=asset_version) }}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- Header & Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('main.index') }}" class="brand-logo">
+                <span class="brand-icon-house">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                </span>
+                <span class="brand-text">Pendataan Penduduk</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="{{ url_for('main.index') }}"
+                    class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">
+                    Input KK
+                </a>
+                <a href="{{ url_for('main.daftar_kk') }}"
+                    class="nav-link {% if request.endpoint in ['main.daftar_kk', 'main.detail_kk', 'main.edit_kk'] %}active{% endif %}">
+                    Daftar KK
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <!-- Flash Notification Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                <span style="font-weight: bold; font-size: 1.1rem;">
+                    {% if category == 'success' %}✓{% elif category == 'danger' %}✕{% else %}ℹ{% endif %}
+                </span>
+                <div>{{ message }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js', v=asset_version) }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

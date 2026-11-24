@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar Kartu Keluarga - Pendataan Penduduk{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Mode Luas (Full-Width / Widescreen) Daftar KK */
+    .main-wrapper {
+        max-width: 95% !important;
+        width: 95% !important;
+        margin: 1.5rem auto !important;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Header dengan Icon Box Sesuai Mockup UI -->
+<div class="page-header-with-icon">
+    <div class="header-icon-title-group">
+        <div class="header-icon-box">
+            <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+            <h1 style="font-size: 1.45rem; font-weight: 700; color: #1e293b;">Daftar Kartu Keluarga</h1>
+            <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.2rem;">
+                Berikut adalah data Kartu Keluarga yang telah tersimpan dalam sistem.
+            </p>
+        </div>
+    </div>
+    <a href="{{ url_for('main.index') }}" class="btn btn-primary" style="padding: 0.65rem 1.25rem;">
+        <i class="fa-solid fa-plus"></i> Input KK Baru
+    </a>
+</div>
+
+<!-- Card Container Tabel Daftar KK -->
+<div class="card" style="box-shadow: var(--shadow-card); border-radius: var(--radius-lg); overflow: hidden;">
+
+    <!-- Toolbar Pencarian & Filter Sesuai Mockup -->
+    <form method="GET" action="{{ url_for('main.daftar_kk') }}" class="table-toolbar">
+        <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="q" placeholder="Cari berdasarkan No. KK atau nama kepala keluarga..."
+                value="{{ search_query|default('') }}">
+        </div>
+        <select class="filter-select" name="filter_status" onchange="this.form.submit()">
+            <option value="all" {% if filter_status=='all' or not filter_status %}selected{% endif %}>Semua Data
+            </option>
+            <option value="anggota_1_3" {% if filter_status=='anggota_1_3' %}selected{% endif %}>1 - 3 Anggota
+            </option>
+            <option value="anggota_4_plus" {% if filter_status=='anggota_4_plus' %}selected{% endif %}>4+ Anggota
+            </option>
+            <option value="nama_asc" {% if filter_status=='nama_asc' %}selected{% endif %}>Nama Kepala (A - Z)
+            </option>
+            <option value="nama_desc" {% if filter_status=='nama_desc' %}selected{% endif %}>Nama Kepala (Z - A)
+            </option>
+            <option value="anggota_desc" {% if filter_status=='anggota_desc' %}selected{% endif %}>Anggota Terbanyak
+            </option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.25rem;">
+            <i class="fa-solid fa-rotate-right"></i> Refresh
+        </button>
+        {% if search_query or (filter_status and filter_status != 'all') %}
+        <a href="{{ url_for('main.daftar_kk') }}" class="btn btn-secondary btn-sm" style="padding: 0.65rem 1rem;">
+            Reset
+        </a>
+        {% endif %}
+    </form>
+
+    <!-- Tabel Data KK -->
+    <div class="table-responsive" style="margin: 0; border: none;">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th style="width: 50px; text-align: center;">No.</th>
+                    <th>No. KK</th>
+                    <th>Nama Kepala Keluarga</th>
+                    <th>Alamat</th>
+                    <th style="text-align: center;">Jumlah Anggota</th>
+                    <th>Tanggal Input</th>
+                    <th style="text-align: center; min-width: 210px;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if kk_list %}
+                {% for kk in kk_list %}
+                <tr>
+                    <td style="text-align: center; font-weight: 600; color: #64748b;">{{ loop.index }}</td>
+                    <td><strong style="color: #1e293b;">{{ kk.no_kk }}</strong></td>
+                    <td><strong style="color: #1e293b;">{{ kk.nama_kepala_keluarga }}</strong></td>
+                    <td>
+                        {{ kk.alamat|default('-', true) }}
+                        {% if kk.kabupaten_kota %}, {{ kk.kabupaten_kota }}{% endif %}
+                    </td>
+                    <td style="text-align: center;">{{ kk.total_anggota|default(1) }} orang</td>
+                    <td style="color: #64748b;">{{ kk.tanggal_input|default('-', true) }}</td>
+                    <td style="text-align: center;">
+                        <div class="btn-action-group">
+                            <a href="{{ url_for('main.detail_kk', no_kk=kk.no_kk) }}"
+                                class="btn-action btn-action-detail" title="Lihat Rincian KK">
+                                <i class="fa-solid fa-eye" style="color: rgb(0, 0, 0);"></i> Detail
+                            </a>
+                            <a href="{{ url_for('main.edit_kk', no_kk=kk.no_kk) }}" class="btn-action btn-action-edit"
+                                title="Edit Data KK">
+                                <i class="fa-solid fa-pencil" style="color: rgb(0, 0, 0);"></i> Edit
+                            </a>
+                            <form action="{{ url_for('main.delete_kk', no_kk=kk.no_kk) }}" method="POST"
+                                style="display: inline;"
+                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus Kartu Keluarga No. {{ kk.no_kk }} ({{ kk.nama_kepala_keluarga }})? Data yang dihapus tidak dapat dikembalikan.');">
+                                <button type="submit" class="btn-action btn-action-delete" title="Hapus KK">
+                                    <i class="fa-solid fa-trash" style="color: rgb(242, 38, 38);"></i> Hapus
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 3.5rem 1.5rem; color: #64748b;">
+                        <i class="fa-regular fa-folder-open"
+                            style="font-size: 2.25rem; color: #94a3b8; margin-bottom: 0.5rem; display: block;"></i>
+                        <p style="font-weight: 600; font-size: 1rem; color: #1e293b;">Belum ada data Kartu Keluarga
+                            tersimpan.</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.25rem;">Silakan klik tombol <strong>Input KK
+                                Baru</strong> untuk memulai pendataan.</p>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table Footer Pagination Sesuai Mockup -->
+    <div class="table-footer">
+        <span>Menampilkan 1-{{ kk_list|length }} dari {{ kk_list|length }} data</span>
+        <div class="pagination-controls">
+            <span class="page-btn"><i class="fa-solid fa-angle-left" style="color: rgb(43, 37, 37);"></i></span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn"><i class="fa-solid fa-angle-right" style="color: rgb(43, 37, 37);"></i></span>
+        </div>
+    </div>
+</div>
+
+<!-- Notice Banner di Bawah Sesuai Mockup UI -->
+<div class="notice-banner">
+    <i class="fa-solid fa-circle-info" style="color: #2563eb; font-size: 1.1rem;"></i>
+    <span>Data yang dihapus tidak dapat dikembalikan.</span>
+</div>
+
+{% endblock %}

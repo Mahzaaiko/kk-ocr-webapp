@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Data Berhasil Disimpan - Pendataan Penduduk{% endblock %}
+
+{% block content %}
+
+<!-- Stepper Navigation (Step 3: Simpan Data Selesai) -->
+<div class="stepper-wrapper">
+    <div class="step-node completed">
+        <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+        <div class="step-label">Input Data</div>
+    </div>
+    <div class="step-line completed"></div>
+    <div class="step-node completed">
+        <div class="step-circle"><i class="fa-solid fa-check"></i></div>
+        <div class="step-label">Periksa Hasil</div>
+    </div>
+    <div class="step-line completed"></div>
+    <div class="step-node active">
+        <div class="step-circle">3</div>
+        <div class="step-label">Simpan Data</div>
+    </div>
+</div>
+
+<!-- Card Sukses Sesuai Permintaan & Mockup UI -->
+<div class="success-card">
+    <div class="success-circle">
+        <i class="fa-solid fa-check"></i>
+    </div>
+    <h2 class="success-title">Data Berhasil Disimpan!</h2>
+    <p class="success-desc">
+        Data Kartu Keluarga telah berhasil disimpan ke dalam sistem.
+    </p>
+
+    <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary"
+            style="padding: 0.85rem 2.5rem; font-size: 1rem; border-radius: 10px;">
+            <i class="fa-solid fa-plus" style="margin-right: 0.35rem;"></i> Input KK Baru
+        </a>
+    </div>
+</div>
+
+{% endblock %}

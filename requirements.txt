@@ -1,0 +1,7 @@
+Flask>=2.3.0
+python-dotenv>=1.0.0
+mysql-connector-python>=8.0.30
+Pillow>=9.5.0
+opencv-python>=4.8.0
+pytesseract>=0.3.10
+Werkzeug>=2.3.0

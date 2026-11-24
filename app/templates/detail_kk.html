@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Detail KK {{ kk.no_kk }} - Pendataan Penduduk{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Mode Luas (Full-Width / Widescreen) Detail KK */
+    .main-wrapper {
+        max-width: 95% !important;
+        width: 95% !important;
+        margin: 1.5rem auto !important;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main);">
+            Detail Kartu Keluarga: {{ kk.no_kk }}
+        </h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Rincian data identitas Kartu Keluarga dan seluruh anggota keluarga yang terdaftar.
+        </p>
+    </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                <a href="{{ url_for('main.daftar_kk') }}" class="btn-detail-action btn-detail-back">
+                    <i class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i> Kembali
+                </a>
+                    <a href="{{ url_for('main.edit_kk', no_kk=kk.no_kk) }}" class="btn-detail-action btn-detail-edit">
+                        <i class="fa-solid fa-pencil" style="color: rgb(255, 255, 255);"></i> Edit KK
+                    </a>
+                    <form action="{{ url_for('main.delete_kk', no_kk=kk.no_kk) }}" method="POST"
+                        style="display: inline;"
+                        onsubmit="return confirm('Hapus permanen Kartu Keluarga No. {{ kk.no_kk }} beserta seluruh anggota keluarganya? Data yang dihapus tidak dapat dikembalikan.');">
+                            <button type="submit" class="btn-detail-action btn-detail-delete">
+                                <i class="fa-solid fa-trash" style="color: rgb(255, 255, 255);"></i> Hapus KK
+                            </button>
+                    </form>
+            </div>
+    </div>
+
+    <!-- Card 1: Identitas KK (9 Field) -->
+    <div class="card" style="margin-bottom: 1.75rem;">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="card-title" style="font-size: 1.05rem;">
+                Identitas Kartu Keluarga
+            </h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">9 Kolom Tersimpan</span>
+        </div>
+        <div class="card-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem;">
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">1. Nomor Kartu Keluarga
+                        (No.
+                        KK):</span>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">{{ kk.no_kk }}</strong>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">2. Nama Kepala
+                        Keluarga:</span>
+                    <strong style="font-size: 1.15rem; color: var(--text-main);">{{ kk.nama_kepala_keluarga }}</strong>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">3. Alamat:</span>
+                    <span style="font-weight: 500;">{{ kk.alamat|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">4. RT / RW:</span>
+                    <span style="font-weight: 500;">{{ kk.rt_rw|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">5. Desa /
+                        Kelurahan:</span>
+                    <span style="font-weight: 500;">{{ kk.desa_kelurahan|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">6. Kecamatan:</span>
+                    <span style="font-weight: 500;">{{ kk.kecamatan|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">7. Kabupaten /
+                        Kota:</span>
+                    <span style="font-weight: 500;">{{ kk.kabupaten_kota|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">8. Kode Pos:</span>
+                    <span style="font-weight: 500;">{{ kk.kode_pos|default('-', true) }}</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">9. Provinsi:</span>
+                    <span style="font-weight: 500;">{{ kk.provinsi|default('-', true) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Tabel Anggota Keluarga (17 Kolom) -->
+    <div class="card">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 class="card-title" style="font-size: 1.05rem;">
+                    Daftar Anggota Keluarga
+                </h3>
+                <p class="card-subtitle">Geser ke kanan untuk melihat seluruh 17 kolom data anggota keluarga.</p>
+            </div>
+            <span
+                style="font-size: 0.85rem; font-weight: 600; background: var(--primary-light); color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 9999px;">
+                Total: {{ anggota_list|length }} Anggota
+            </span>
+        </div>
+        <div class="card-body" style="padding: 0.5rem 1rem 1rem 1rem;">
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">No</th>
+                            <th>1. Nama Lengkap</th>
+                            <th>2. NIK</th>
+                            <th>3. Jenis Kelamin</th>
+                            <th>4. Tempat Lahir</th>
+                            <th>5. Tanggal Lahir</th>
+                            <th>6. Agama</th>
+                            <th>7. Pendidikan</th>
+                            <th>8. Pekerjaan</th>
+                            <th>9. Gol. Darah</th>
+                            <th>10. Status Kawin</th>
+                            <th>11. Tgl Perkawinan</th>
+                            <th>12. Hubungan</th>
+                            <th>13. Kewarganegaraan</th>
+                            <th>14. No. Paspor</th>
+                            <th>15. No. KITAP</th>
+                            <th>16. Nama Ayah</th>
+                            <th>17. Nama Ibu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if anggota_list %}
+                        {% for a in anggota_list %}
+                        <tr>
+                            <td style="text-align: center; font-weight: 600;">{{ loop.index }}</td>
+                            <td><strong style="color: var(--primary-color);">{{ a.nama_lengkap|default('-', true)
+                                    }}</strong></td>
+                            <td><span style="font-family: monospace; font-size: 0.85rem;">{{ a.nik|default('-', true)
+                                    }}</span></td>
+                            <td>{{ a.jenis_kelamin|default('-', true) }}</td>
+                            <td>{{ a.tempat_lahir|default('-', true) }}</td>
+                            <td>{{ a.tanggal_lahir|default('-', true) }}</td>
+                            <td>{{ a.agama|default('-', true) }}</td>
+                            <td>{{ a.pendidikan|default('-', true) }}</td>
+                            <td>{{ a.jenis_pekerjaan|default('-', true) }}</td>
+                            <td>{{ a.golongan_darah|default('-', true) }}</td>
+                            <td>{{ a.status_perkawinan|default('-', true) }}</td>
+                            <td>{{ a.tanggal_perkawinan|default('-', true) }}</td>
+                            <td>{{ a.status_hubungan_dalam_keluarga|default('-', true) }}</td>
+                            <td>{{ a.kewarganegaraan|default('-', true) }}</td>
+                            <td>{{ a.no_paspor|default('-', true) }}</td>
+                            <td>{{ a.no_kitap|default('-', true) }}</td>
+                            <td>{{ a.nama_ayah|default('-', true) }}</td>
+                            <td>{{ a.nama_ibu|default('-', true) }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="18" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                                <em>Tidak ada data anggota keluarga.</em>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

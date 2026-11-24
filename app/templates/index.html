@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Input Data Kartu Keluarga - Pendataan Penduduk{% endblock %}
+
+{% block content %}
+
+<!-- Stepper Navigation (Step 1: Input Data) -->
+<div class="stepper-wrapper" id="mainStepper">
+    <div class="step-node active" id="stepNode1">
+        <div class="step-circle" id="stepCircle1">1</div>
+        <div class="step-label" id="stepLabel1">Input Data</div>
+    </div>
+    <div class="step-line" id="stepLine1"></div>
+    <div class="step-node" id="stepNode2">
+        <div class="step-circle" id="stepCircle2">2</div>
+        <div class="step-label" id="stepLabel2">Periksa Hasil</div>
+    </div>
+    <div class="step-line" id="stepLine2"></div>
+    <div class="step-node" id="stepNode3">
+        <div class="step-circle" id="stepCircle3">3</div>
+        <div class="step-label" id="stepLabel3">Simpan Data</div>
+    </div>
+</div>
+
+<!-- Step 1 View: Layout 2 Kolom (Kiri: Tata Cara, Kanan: Form Input) -->
+<div id="step1View" class="input-grid-layout">
+
+    <!-- Kolom Kiri: Tata Cara Penggunaan -->
+    <div class="guide-card">
+        <h3 class="guide-title">
+            Tata Cara Penggunaan
+        </h3>
+        <p class="guide-desc">
+            Ikuti panduan berikut agar pembacaan OCR Kartu Keluarga berjalan optimal:
+        </p>
+
+        <ul class="guide-list">
+            <li class="guide-item">
+                <div class="guide-number">1</div>
+                <div class="guide-text">
+                    <h4>Siapkan Foto Kartu Keluarga</h4>
+                    <p>Pastikan foto tegak, pencahayaan cukup, tidak buram, dan teks tabel terbaca dengan jelas.</p>
+                </div>
+            </li>
+            <li class="guide-item">
+                <div class="guide-number">2</div>
+                <div class="guide-text">
+                    <h4>Isi Nama Kepala Keluarga</h4>
+                    <p>Ketik nama lengkap Kepala Keluarga sesuai yang tertera pada bagian atas blangko KK.</p>
+                </div>
+            </li>
+            <li class="guide-item">
+                <div class="guide-number">3</div>
+                <div class="guide-text">
+                    <h4>Unggah Berkas Gambar</h4>
+                    <p>Format yang didukung adalah <strong>JPG, JPEG, PNG</strong> (Maks. 16MB). Format PDF tidak
+                        didukung.</p>
+                </div>
+            </li>
+            <li class="guide-item">
+                <div class="guide-number">4</div>
+                <div class="guide-text">
+                    <h4>Periksa & Koreksi Hasil</h4>
+                    <p>Sistem akan memindai secara otomatis. Anda dapat mengoreksi data pada tabel sebelum disimpan ke
+                        database.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Kolom Kanan: Form Input & Unggah KK -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Input Data Kartu Keluarga</h2>
+            <p class="card-subtitle">
+                Masukkan nama kepala keluarga dan unggah foto Kartu Keluarga untuk melanjutkan proses pendataan.
+            </p>
+        </div>
+        <div class="card-body">
+            <form id="uploadForm" action="{{ url_for('main.upload_kk') }}" method="POST" enctype="multipart/form-data">
+
+                <!-- Input Nama Kepala Keluarga -->
+                <div class="form-group">
+                    <label for="nama_kepala_keluarga" class="form-label">
+                        Nama Kepala Keluarga <span class="required">*</span>
+                    </label>
+                    <input type="text" id="nama_kepala_keluarga" name="nama_kepala_keluarga" class="form-control"
+                        placeholder="Contoh: Budi Santoso" value="{{ nama_kepala_keluarga|default('') }}" required>
+                </div>
+
+                <!-- Input Unggah Foto KK -->
+                <div class="form-group">
+                    <label class="form-label">
+                        Foto Kartu Keluarga <span class="required">*</span>
+                    </label>
+
+                    <div class="upload-dropzone" id="uploadDropzone">
+                        <input type="file" id="gambar_kk" name="gambar_kk" class="file-input-hidden"
+                            accept=".jpg,.jpeg,.png" required>
+                        <div class="upload-icon-circle">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </div>
+                        <div class="upload-text">Klik untuk mengunggah foto KK</div>
+                        <div class="upload-subtext">Format: JPG, JPEG, PNG | Maks. 16 MB</div>
+                    </div>
+
+                    <!-- Thumbnail Preview -->
+                    <div class="preview-card" id="previewCard">
+                        <img id="previewThumb" class="preview-thumb" src="" alt="Thumbnail KK">
+                        <div class="preview-info">
+                            <div id="previewName" class="preview-name">-</div>
+                            <div id="previewSize" class="preview-size">-</div>
+                        </div>
+                        <button type="button" id="btnRemovePreview" class="btn-remove-preview">✕ Hapus</button>
+                    </div>
+                </div>
+
+                <!-- Tombol Proses Data -->
+                <button type="submit" id="btnSubmit" class="btn btn-primary btn-block"
+                    style="padding: 0.85rem; font-size: 1rem; margin-top: 1.5rem; border-radius: 10px;">
+                    Proses Data <i class="fa-solid fa-arrow-right"
+                        style="color: rgb(255, 255, 255); margin-left: 0.35rem;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Step 2 Inline Loading View (Non-Popup Sesuai Mockup UI) -->
+<div id="step2LoadingView" style="display: none;">
+    <div class="loading-card-step2">
+        <div class="loading-illustration-box">
+            <svg class="loading-illustration-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="8" width="34" height="46" rx="6" stroke="#2563eb" stroke-width="3" fill="#ffffff" />
+                <line x1="22" y1="20" x2="38" y2="20" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" />
+                <line x1="22" y1="28" x2="38" y2="28" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" />
+                <line x1="22" y1="36" x2="32" y2="36" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" />
+                <line x1="56" y1="12" x2="60" y2="8" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="58" y1="20" x2="64" y2="22" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="44" cy="42" r="14" stroke="#1d4ed8" stroke-width="4" fill="#eff6ff" />
+                <line x1="54" y1="52" x2="66" y2="64" stroke="#1d4ed8" stroke-width="4.5" stroke-linecap="round" />
+            </svg>
+        </div>
+        <h2 class="loading-title-step2">Sedang Memproses Data...</h2>
+        <p class="loading-desc-step2">
+            Sistem sedang membaca informasi dari foto Kartu Keluarga.<br>
+            Mohon tunggu sebentar, proses ini mungkin membutuhkan waktu.
+        </p>
+        <div class="loading-progress-track">
+            <div class="loading-progress-bar"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+        const namaInput = document.getElementById('nama_kepala_keluarga').value.trim();
+        const fileInput = document.getElementById('gambar_kk');
+
+        if (!namaInput) {
+            alert('Nama Kepala Keluarga wajib diisi.');
+            e.preventDefault();
+            return;
+        }
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Silakan pilih foto Kartu Keluarga terlebih dahulu.');
+            e.preventDefault();
+            return;
+        }
+
+        // Transisi halus ke tampilan Step 2 Loading (Non-Popup)
+        const node1 = document.getElementById('stepNode1');
+        const circle1 = document.getElementById('stepCircle1');
+        const line1 = document.getElementById('stepLine1');
+        const node2 = document.getElementById('stepNode2');
+
+        // Update Stepper ke Step 2
+        node1.className = 'step-node completed';
+        circle1.innerHTML = '<i class="fa-solid fa-check"></i>';
+        line1.className = 'step-line completed';
+        node2.className = 'step-node active';
+
+        // Ganti form ke loading view
+        document.getElementById('step1View').style.display = 'none';
+        document.getElementById('step2LoadingView').style.display = 'block';
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+{% endblock %}

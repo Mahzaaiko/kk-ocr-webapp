@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Data KK {{ kk.no_kk }} - Pendataan Penduduk{% endblock %}
+
+{% block extra_css %}
+<style>
+    .main-wrapper {
+        max-width: 95% !important;
+        width: 95% !important;
+        margin: 1.5rem auto !important;
+    }
+
+    .form-row-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .form-row-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+
+        .form-row-grid-4,
+        .form-row-grid-2 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main);">
+            Edit Data Kartu Keluarga: {{ kk.no_kk }}
+        </h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Perbarui data identitas Kartu Keluarga atau susunan anggota keluarga.
+        </p>
+    </div>
+        <a href="{{ url_for('main.detail_kk', no_kk=kk.no_kk) }}" class="btn-detail-action btn-detail-back">
+            <i class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i> Kembali
+        </a>
+</div>
+
+<form id="formEditKK" action="{{ url_for('main.edit_kk', no_kk=kk.no_kk) }}" method="POST">
+
+    <!-- Card 1: Identitas KK (9 Field) -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title" style="font-size: 1.05rem;">
+                Identitas Kartu Keluarga
+            </h3>
+        </div>
+        <div class="card-body">
+            <!-- Row 1: No KK & Nama Kepala Keluarga -->
+            <div class="form-row-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="no_kk">Nomor Kartu Keluarga (No. KK) <span
+                            class="required">*</span></label>
+                    <input type="text" id="no_kk" name="no_kk" class="form-control" maxlength="16"
+                        value="{{ kk.no_kk }}" readonly style="background-color: #f1f5f9; cursor: not-allowed;">
+                    <div class="form-help" style="font-size: 0.75rem; color: var(--text-muted);">Nomor KK adalah Primary
+                        Key dan tidak dapat diubah.</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="nama_kepala_keluarga">Nama Kepala Keluarga <span
+                            class="required">*</span></label>
+                    <input type="text" id="nama_kepala_keluarga" name="nama_kepala_keluarga" class="form-control"
+                        value="{{ kk.nama_kepala_keluarga }}" required>
+                </div>
+            </div>
+
+            <!-- Row 2: Alamat & RT/RW -->
+            <div class="form-row-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="alamat">Alamat Lengkap</label>
+                    <input type="text" id="alamat" name="alamat" class="form-control"
+                        value="{{ kk.alamat|default('', true) }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rt_rw">RT / RW</label>
+                    <input type="text" id="rt_rw" name="rt_rw" class="form-control"
+                        value="{{ kk.rt_rw|default('', true) }}">
+                </div>
+            </div>
+
+            <!-- Row 3: Desa, Kecamatan, Kab/Kota, Kode Pos -->
+            <div class="form-row-grid-4">
+                <div class="form-group">
+                    <label class="form-label" for="desa_kelurahan">Desa / Kelurahan</label>
+                    <input type="text" id="desa_kelurahan" name="desa_kelurahan" class="form-control"
+                        value="{{ kk.desa_kelurahan|default('', true) }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="kecamatan">Kecamatan</label>
+                    <input type="text" id="kecamatan" name="kecamatan" class="form-control"
+                        value="{{ kk.kecamatan|default('', true) }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="kabupaten_kota">Kabupaten / Kota</label>
+                    <input type="text" id="kabupaten_kota" name="kabupaten_kota" class="form-control"
+                        value="{{ kk.kabupaten_kota|default('', true) }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="kode_pos">Kode Pos</label>
+                    <input type="text" id="kode_pos" name="kode_pos" class="form-control"
+                        value="{{ kk.kode_pos|default('', true) }}">
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="provinsi">Provinsi</label>
+                <input type="text" id="provinsi" name="provinsi" class="form-control"
+                    value="{{ kk.provinsi|default('', true) }}">
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Anggota Keluarga (17 Kolom) -->
+    <div class="card">
+        <div class="card-header"
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+                <h3 class="card-title" style="font-size: 1.05rem;">
+                    Daftar Anggota Keluarga
+                </h3>
+                <p class="card-subtitle">Perbarui data atau gunakan tombol Tambah Baris untuk memasukkan anggota baru.
+                </p>
+            </div>
+            <button type="button" id="btnAddRow" class="btn-add-member"><i class="fa-solid fa-plus"
+                    style="color: rgb(21, 73, 114);"></i> Tambah Baris Anggota</button>
+        </div>
+        <div class="card-body" style="padding: 0.5rem 1rem 1rem 1rem;">
+            <div class="table-responsive">
+                <table class="table-custom" id="tableAnggota">
+                    <thead>
+                        <tr>
+                            <th style="width: 45px; text-align: center;">Aksi</th>
+                            <th style="width: 40px; text-align: center;">No</th>
+                            <th>1. Nama Lengkap <span class="required">*</span></th>
+                            <th>2. NIK (16 Digit)</th>
+                            <th>3. Jenis Kelamin</th>
+                            <th>4. Tempat Lahir</th>
+                            <th>5. Tanggal Lahir</th>
+                            <th>6. Agama</th>
+                            <th>7. Pendidikan</th>
+                            <th>8. Pekerjaan</th>
+                            <th>9. Gol. Darah</th>
+                            <th>10. Status Kawin</th>
+                            <th>11. Tgl Perkawinan</th>
+                            <th>12. Hubungan</th>
+                            <th>13. Kewarganegaraan</th>
+                            <th>14. No. Paspor</th>
+                            <th>15. No. KITAP</th>
+                            <th>16. Nama Ayah</th>
+                            <th>17. Nama Ibu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyAnggota">
+                        {% for a in anggota_list %}
+                        <tr>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn-delete-row" onclick="deleteRow(this)">✕</button>
+                            </td>
+                            <td class="row-number" style="text-align: center; font-weight: 600;">{{ loop.index }}</td>
+                            <td><input type="text" name="nama_lengkap[]" class="table-input"
+                                    value="{{ a.nama_lengkap|default('', true) }}" required></td>
+                            <td><input type="text" name="nik[]" class="table-input" maxlength="16"
+                                    value="{{ a.nik|default('', true) }}"></td>
+                            <td>
+                                <select name="jenis_kelamin[]" class="table-input">
+                                    <option value="">- Pilih -</option>
+                                    <option value="LAKI-LAKI" {% if a.jenis_kelamin and 'LAKI' in
+                                        a.jenis_kelamin.upper() %}selected{% endif %}>LAKI-LAKI</option>
+                                    <option value="PEREMPUAN" {% if a.jenis_kelamin and 'PEREMPUAN' in
+                                        a.jenis_kelamin.upper() %}selected{% endif %}>PEREMPUAN</option>
+                                </select>
+                            </td>
+                            <td><input type="text" name="tempat_lahir[]" class="table-input"
+                                    value="{{ a.tempat_lahir|default('', true) }}"></td>
+                            <td><input type="date" name="tanggal_lahir[]" class="table-input"
+                                    value="{{ a.tanggal_lahir|default('', true) }}"></td>
+                            <td><input type="text" name="agama[]" class="table-input"
+                                    value="{{ a.agama|default('', true) }}"></td>
+                            <td><input type="text" name="pendidikan[]" class="table-input"
+                                    value="{{ a.pendidikan|default('', true) }}"></td>
+                            <td><input type="text" name="jenis_pekerjaan[]" class="table-input"
+                                    value="{{ a.jenis_pekerjaan|default('', true) }}"></td>
+                            <td><input type="text" name="golongan_darah[]" class="table-input" maxlength="5"
+                                    value="{{ a.golongan_darah|default('', true) }}"></td>
+                            <td><input type="text" name="status_perkawinan[]" class="table-input"
+                                    value="{{ a.status_perkawinan|default('', true) }}"></td>
+                            <td><input type="date" name="tanggal_perkawinan[]" class="table-input"
+                                    value="{{ a.tanggal_perkawinan|default('', true) }}"></td>
+                            <td><input type="text" name="status_hubungan_dalam_keluarga[]" class="table-input"
+                                    value="{{ a.status_hubungan_dalam_keluarga|default('', true) }}"></td>
+                            <td><input type="text" name="kewarganegaraan[]" class="table-input"
+                                    value="{{ a.kewarganegaraan|default('WNI', true) }}"></td>
+                            <td><input type="text" name="no_paspor[]" class="table-input"
+                                    value="{{ a.no_paspor|default('', true) }}"></td>
+                            <td><input type="text" name="no_kitap[]" class="table-input"
+                                    value="{{ a.no_kitap|default('', true) }}"></td>
+                            <td><input type="text" name="nama_ayah[]" class="table-input"
+                                    value="{{ a.nama_ayah|default('', true) }}"></td>
+                            <td><input type="text" name="nama_ibu[]" class="table-input"
+                                    value="{{ a.nama_ibu|default('', true) }}"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Simpan Perubahan -->
+    <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; margin-bottom: 3rem;">
+        <a href="{{ url_for('main.detail_kk', no_kk=kk.no_kk) }}" class="btn-back">
+            <i class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i> Batal
+        </a>
+        <button type="submit" class="btn btn-primary" style="padding: 0.85rem 2rem; font-size: 1rem;">
+            <i class="fa-solid fa-check" style="color: rgb(255, 253, 253);"></i> Simpan Perubahan
+        </button>
+    </div>
+</form>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function deleteRow(btn) {
+        const tbody = document.getElementById('tbodyAnggota');
+        if (tbody.rows.length <= 1) {
+            alert('Minimal harus ada 1 baris anggota keluarga.');
+            return;
+        }
+        if (confirm('Hapus baris anggota ini?')) {
+            btn.closest('tr').remove();
+            updateRowNumbers();
+        }
+    }
+
+    function updateRowNumbers() {
+        document.querySelectorAll('#tbodyAnggota tr').forEach((row, idx) => {
+            const noCell = row.querySelector('.row-number');
+            if (noCell) noCell.textContent = idx + 1;
+        });
+    }
+
+    document.getElementById('btnAddRow').addEventListener('click', function () {
+        const tbody = document.getElementById('tbodyAnggota');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td style="text-align: center;"><button type="button" class="btn-delete-row" onclick="deleteRow(this)">✕</button></td>
+            <td class="row-number" style="text-align: center; font-weight: 600;">${tbody.rows.length + 1}</td>
+            <td><input type="text" name="nama_lengkap[]" class="table-input" placeholder="Nama Lengkap" required></td>
+            <td><input type="text" name="nik[]" class="table-input" maxlength="16" placeholder="16 digit NIK"></td>
+            <td>
+                <select name="jenis_kelamin[]" class="table-input">
+                    <option value="">- Pilih -</option>
+                    <option value="LAKI-LAKI">LAKI-LAKI</option>
+                    <option value="PEREMPUAN">PEREMPUAN</option>
+                </select>
+            </td>
+            <td><input type="text" name="tempat_lahir[]" class="table-input" placeholder="Tempat Lahir"></td>
+            <td><input type="date" name="tanggal_lahir[]" class="table-input"></td>
+            <td><input type="text" name="agama[]" class="table-input" placeholder="Agama"></td>
+            <td><input type="text" name="pendidikan[]" class="table-input" placeholder="Pendidikan"></td>
+            <td><input type="text" name="jenis_pekerjaan[]" class="table-input" placeholder="Pekerjaan"></td>
+            <td><input type="text" name="golongan_darah[]" class="table-input" maxlength="5" placeholder="Gol. Darah"></td>
+            <td><input type="text" name="status_perkawinan[]" class="table-input" placeholder="Status Kawin"></td>
+            <td><input type="date" name="tanggal_perkawinan[]" class="table-input"></td>
+            <td><input type="text" name="status_hubungan_dalam_keluarga[]" class="table-input" placeholder="Hubungan"></td>
+            <td><input type="text" name="kewarganegaraan[]" class="table-input" value="WNI"></td>
+            <td><input type="text" name="no_paspor[]" class="table-input" placeholder="No. Paspor"></td>
+            <td><input type="text" name="no_kitap[]" class="table-input" placeholder="No. KITAP"></td>
+            <td><input type="text" name="nama_ayah[]" class="table-input" placeholder="Nama Ayah"></td>
+            <td><input type="text" name="nama_ibu[]" class="table-input" placeholder="Nama Ibu"></td>
+        `;
+        tbody.appendChild(tr);
+        updateRowNumbers();
+    });
+</script>
+{% endblock %}
